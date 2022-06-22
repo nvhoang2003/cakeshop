@@ -1,0 +1,16 @@
+body{
+    padding-top: 5rem;
+    padding-bottom: 5rem;
+    margin-top: 1rem;
+}
+.book-index {
+    font-weight: normal;
+}
+.but {
+    margin-top: 0.5rem;
+    margin-bottom: 0.5rem;
+    height :3em;
+}
+h1{
+    text-align: center;
+}
