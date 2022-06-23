@@ -2,7 +2,7 @@
 
 @section('main')
   <div class="container">
-    <h1 class="display-4">Are you sure you want to delete Event?</h1>
+    <h1 class="display-4">Are you sure! You want to delete Event?</h1>
     <dl class="row">
       <dt class="col-sm-3">Eventid</dt>
       <dd class="col-sm-9">{{ $event->eventid }}</dd>
