@@ -53,4 +53,13 @@ class CategoryRepos
 
         DB::delete($sql, [$eventid]);
     }
+
+    public static function getEventByCakeId($cakeid)
+    {
+        $sql= 'select e.* ';
+        $sql .= 'from event as e ';
+        $sql .= 'join cake as c on e.eventid= c.event ';
+        $sql .= 'where c.cakeid = ?';
+        return DB::select($sql, [$cakeid]);
+    }
 }

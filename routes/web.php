@@ -290,6 +290,11 @@ Route::group(['prefix' => 'Cake'], function () {
         'as' => 'Cake.index'
     ]);
 
+    Route::get('show/{cakeid}',[
+        'uses' => 'CakeController@show',
+        'as' => 'Cake.show'
+    ]);
+
     Route::get('create', [
         'uses' => 'CakeController@create',
         'as' => 'Cake.create'
@@ -300,22 +305,23 @@ Route::group(['prefix' => 'Cake'], function () {
         'as' => 'Cake.store'
     ]);
 
-    Route::get('update/{eventid}', [
+    Route::get('update/{cakeid}', [
         'uses' => 'CakeController@edit',
         'as' => 'Cake.edit'
     ]);
 
-    Route::post('update/{eventid}', [
+    Route::post('update/{cakeid}', [
         'uses' => 'CakeController@update',
         'as' => 'Cake.update'
     ]);
 
-    Route::get('delete/{eventid}', [
+    Route::get('delete/{cakeid}', [
         'uses' => 'CakeController@confirm',
         'as' => 'Cake.confirm'
     ]);
-    Route::post('delete/{eventid}', [
+    Route::post('delete/{cakeid}', [
         'uses' => 'CakeController@destroy',
         'as' => 'Cake.destroy'
     ]);
+
 });

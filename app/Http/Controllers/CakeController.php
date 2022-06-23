@@ -10,10 +10,10 @@ class CakeController extends Controller
 {
     public function index()
     {
-        $cake=CakeRepos::getAllCake();
+        $cake=CakeRepos::getAllCakeWithevent();
         return view('Cake.indexCake',
             [
-                'cake'=>$cake,
+                'cake'=>$cake
             ]);
     }
 
@@ -39,7 +39,7 @@ class CakeController extends Controller
 
     public function store(Request $request)
     {
-        $this->formValidate($request)->validate(); //shortcut
+        $this->formValidate($request)->validate();
 
         $cake = (object)[
             'cakename' => $request->input('cakename'),
@@ -79,6 +79,79 @@ class CakeController extends Controller
             ]
         );
     }
+
+    public function edit($cakeid)
+    {
+        $cake = CakeRepos::getCakeById($cakeid);
+        $event =CategoryRepos::getAllCategory();
+
+        return view(
+            'Cake.updateCake',
+            [
+                "cake" => $cake[0],
+                "event"=>$event
+            ]);
+    }
+
+    public function update(Request $request, $cakeid)
+    {
+        if ($cakeid != $request->input('cakeid')) {
+            //id in query string must match id in hidden input
+            return redirect()->action('CakeController@index');
+        }
+
+        $this->formValidate($request)->validate(); //shortcut
+
+        $cake = (object)[
+            'cakeid' => $request->input('cakeid'),
+            'cakename' => $request->input('cakename'),
+            'flavor' => $request->input('flavor'),
+            'price' => $request->input('price'),
+            'expiry' => $request->input('expiry'),
+            'image' => $request->input('image'),
+            'size' => $request->input('size'),
+            'event' => $request->input('event'),
+        ];
+        CakeRepos::update($cake);
+
+        return redirect()->action('CakeController@index')
+            ->with('msg', 'Update Successfully');
+    }
+
+
+    public function show($cakeid){
+        $cake = CakeRepos::getCakeById($cakeid);
+        $event =CategoryRepos::getEventByCakeId($cakeid);
+        return view('Cake.showCake',
+            [
+                'cake'=>$cake[0],
+                'event'=>$event[0]
+            ]);
+
+    }
+
+    public function confirm($cakeid){
+        $cake = CakeRepos::getCakeById($cakeid);
+        $event= CategoryRepos::getEventByCakeId($cakeid);
+        return view('Cake.deleteCake',
+            [
+                'cake' => $cake[0],
+                'event'=>$event[0]
+            ]
+        );
+    }
+
+    public function destroy(Request $request, $cakeid)
+    {
+        if ($request->input('cakeid') != $cakeid) {
+            return redirect()->action('CakeController@index');
+        }
+        CakeRepos::delete($cakeid);
+        return redirect()->action('CakeController@index')
+            ->with('msg', 'Delete Successfully');
+    }
+
+
 
 
 
