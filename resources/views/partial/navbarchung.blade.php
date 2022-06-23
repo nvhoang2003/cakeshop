@@ -1,7 +1,6 @@
-<nav class="navbar navbar-expand-md navbar-dark fixed-top bg-dark">
+<nav class="navbar navbar-expand-md navbar-dark fixed-top bg-primary justify-content-center ">
   <div class="container">
-    <a class="navbar-brand" href="{{route('Event.index')}}">
-      Event Cake</a>
+
     <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarCollapse"
             aria-controls="navbarCollapse" aria-expanded="false" aria-label="Toggle navigation">
       <span class="navbar-toggler-icon"></span>
@@ -11,11 +10,11 @@
         <li class="nav-item dropdown">
           <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown"
              aria-haspopup="true" aria-expanded="false">
-            New Event Cake
+            Event
           </a>
           <div class="dropdown-menu" aria-labelledby="navbarDropdown">
-            <a class="dropdown-item" href="{{route('Event.index')}}">View Event Cake</a>
-            <a class="dropdown-item" href="{{route('Event.create')}}">New  Event Cake </a>
+            <a class="dropdown-item" href="{{route('Event.index')}}">View Event</a>
+            <a class="dropdown-item" href="{{route('Event.create')}}">New Event</a>
           </div>
         </li>
       </ul>
@@ -24,10 +23,6 @@
 
 
   <div class="container">
-    <a class="navbar-brand"
-       href="{{route('Cake.index')}}"
-    >
-      Cake index</a>
     <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarCollapse"
             aria-controls="navbarCollapse" aria-expanded="false" aria-label="Toggle navigation">
       <span class="navbar-toggler-icon"></span>
@@ -37,7 +32,7 @@
         <li class="nav-item dropdown">
           <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown"
              aria-haspopup="true" aria-expanded="false">
-            New Cake
+            Cake
           </a>
           <div class="dropdown-menu" aria-labelledby="navbarDropdown">
             <a class="dropdown-item"
