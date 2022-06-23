@@ -24,6 +24,8 @@
       </div>
 
       <button type="submit" class="btn btn-dark">Submit</button>
+      <a href="{{route('Event.index')}}" class="btn btn-info">Cancel</a>
+
     </form>
   </div>
 @endsection

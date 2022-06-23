@@ -16,10 +16,6 @@
 
       <div class="form-group">
         <label for="image" class="font-weight-bold">Image</label>
-{{--        @php--}}
-{{--          $date=explode('-',$classroom['date']);--}}
-{{--          $date=$date[2].'-'.$date[1].'-'.$date[0];--}}
-{{--        @endphp--}}
         <input type="text" class="form-control" id="image" name="image" value="{{old('image')?? $event->image}}">
       </div>
 
@@ -29,6 +25,7 @@
       </div>
 
       <button type="submit" class="btn btn-dark">Submit</button>
+      <a href="{{route('Event.index')}}" class="btn btn-info">Cancel</a>
     </form>
   </div>
 @endsection

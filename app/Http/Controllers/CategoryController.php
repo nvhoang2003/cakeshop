@@ -29,7 +29,7 @@ class CategoryController extends Controller
 
     public function store(Request $request)
     {
-        $this->formValidate($request)->validate(); //shortcut
+        $this->formValidate($request)->validate();
 
         $event = (object)[
             'eventname' => $request->input('eventname'),
@@ -63,22 +63,19 @@ class CategoryController extends Controller
 
     public function edit($eventid)
     {
-        $event = CategoryRepos::getEventById($eventid); //this is always an array
-
+        $event = CategoryRepos::getEventById($eventid);
 
         return view(
-            'Category.updateCategory',
-            ["event" => $event[0]]);
+            'Category.updateCategory', ["event" => $event[0]]);
     }
 
     public function update(Request $request, $eventid)
     {
         if ($eventid != $request->input('eventid')) {
-            //id in query string must match id in hidden input
             return redirect()->action('CategoryController@index');
         }
 
-        $this->formValidate($request)->validate(); //shortcut
+        $this->formValidate($request)->validate();
 
         $event = (object)[
             'eventid' => $request->input('eventid'),
@@ -93,7 +90,7 @@ class CategoryController extends Controller
     }
 
     public function confirm($eventid){
-        $event = CategoryRepos::getEventById($eventid); //this is always an array
+        $event = CategoryRepos::getEventById($eventid);
 
         return view('Category.deleteCategory',
             [
@@ -105,13 +102,9 @@ class CategoryController extends Controller
     public function destroy(Request $request, $eventid)
     {
         if ($request->input('eventid') != $eventid) {
-            //id in query string must match id in hidden input
             return redirect()->action('CategoryController@index');
         }
-
         CategoryRepos::delete($eventid);
-
-
         return redirect()->action('CategoryController@index')
             ->with('msg', 'Delete Successfully');
     }
