@@ -325,3 +325,20 @@ Route::group(['prefix' => 'Cake'], function () {
     ]);
 
 });
+
+Route::group(['prefix' => 'Admin'], function () {
+    Route::get('', [
+        'uses' => 'AdminController@index',
+        'as' => 'admin.index'
+    ]);
+    Route::get('update/{admin}', [
+        'uses' => 'AdminController@edit',
+        'as' => 'Admin.edit'
+    ]);
+
+    Route::post('update/{admin}', [
+        'uses' => 'AdminController@update',
+        'as' => 'Admin.update'
+    ]);
+
+});
