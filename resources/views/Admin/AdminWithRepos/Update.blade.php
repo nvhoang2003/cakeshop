@@ -9,7 +9,7 @@
 
         <form action="{{route('admin.update', ['id' => old('id')?? $admin->id])}}" method="post">
             @csrf
-            @include('admin.adminWithRepos.bookFields')
+            @include('admin.adminWithRepos.adminFields')
 
             <button type="submit" class="btn btn-dark">Submit</button>
         </form>
